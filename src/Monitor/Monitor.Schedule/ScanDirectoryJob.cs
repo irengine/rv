@@ -7,7 +7,7 @@ using Quartz;
 using Monitor.Common;
 using Monitor.Communication;
 using System.IO;
-using Monitor.Schedule.V47;
+using Monitor.Schedule.Vestas;
 
 namespace Monitor.Schedule
 {

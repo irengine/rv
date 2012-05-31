@@ -6,7 +6,7 @@ using Quartz;
 using Quartz.Impl;
 using Common.Logging;
 using Monitor.Common;
-using Monitor.Schedule.V47;
+using Monitor.Schedule.Vestas;
 
 namespace Monitor.Schedule
 {

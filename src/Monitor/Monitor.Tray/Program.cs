@@ -8,7 +8,7 @@ using Monitor.Common;
 using Monitor.Schedule;
 using Monitor.Communication;
 using System.Data;
-using Monitor.Schedule.V47;
+using Monitor.Schedule.Vestas;
 
 namespace Monitor.Tray
 {

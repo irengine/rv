@@ -1,7 +1,7 @@
 ﻿using System.Runtime.InteropServices;
 using System;
 
-namespace Monitor.Schedule.V47
+namespace Monitor.Schedule.Vestas
 {
     public class TagWriter
     {

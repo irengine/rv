@@ -7,7 +7,7 @@ using Monitor.Common;
 using System.Globalization;
 using Common.Logging;
 
-namespace Monitor.Schedule.V47
+namespace Monitor.Schedule.Vestas
 {
     public class DataFileProcessor
     {

@@ -6,7 +6,7 @@ using System.IO;
 using Monitor.Common;
 using Common.Logging;
 
-namespace Monitor.Schedule.V47
+namespace Monitor.Schedule.Vestas
 {
     public class ImportFileProcessor
     {

@@ -7,7 +7,7 @@ using Monitor.Common;
 using Monitor.Communication;
 using Monitor.Schedule;
 using System.Data;
-using Monitor.Schedule.V47;
+using Monitor.Schedule.Vestas;
 using System.Globalization;
 
 namespace Monitor.ConsoleView
