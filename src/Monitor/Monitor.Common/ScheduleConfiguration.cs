@@ -23,6 +23,9 @@ namespace Monitor.Common
         public string Version;
         public string SERVER_NAME;
 
+        public string OpcServerName;
+        public string OpcServiceName;
+
         public ScheduleConfiguration()
             : base(false)
         {

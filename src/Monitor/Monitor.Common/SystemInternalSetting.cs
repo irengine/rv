@@ -109,5 +109,15 @@ namespace Monitor.Common
         {
             get { return conf.SERVER_NAME; }
         }
+
+        public static string OpcServerName
+        {
+            get { return conf.OpcServerName; }
+        }
+
+        public static string OpcServiceName
+        {
+            get { return conf.OpcServiceName; }
+        }
     }
 }

@@ -79,6 +79,19 @@ namespace Monitor.Schedule
             DateTime ft = engine.ScheduleJob(trigger);
         }
 
+        public static void ScheduleOpcJob()
+        {
+            string jobName = "ScanOpc";
+            JobDetail job = new JobDetail(jobName, jobName, typeof(OpcJob));
+            job.JobDataMap["server_name"] = SystemInternalSetting.OpcServerName;
+            job.JobDataMap["service_name"] = SystemInternalSetting.OpcServiceName;
+            job.JobDataMap["fields"] = SystemInternalSetting.Fields;
+
+            CronTrigger trigger = new CronTrigger(jobName, jobName, jobName, jobName, SystemInternalSetting.Frequence);
+            engine.AddJob(job, true);
+            DateTime ft = engine.ScheduleJob(trigger);
+        }
+
         public static void ScheduleHeartbeatJob(string projectId)
         {
             string jobName = "Heartbeat_" + projectId;

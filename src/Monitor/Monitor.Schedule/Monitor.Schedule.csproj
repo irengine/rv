@@ -34,6 +34,12 @@
     <Reference Include="Common.Logging">
       <HintPath>..\..\..\lib\Common.Logging.dll</HintPath>
     </Reference>
+    <Reference Include="OpcNetApi">
+      <HintPath>..\..\..\lib\OpcNetApi.dll</HintPath>
+    </Reference>
+    <Reference Include="OpcNetApi.Com">
+      <HintPath>..\..\..\lib\OpcNetApi.Com.dll</HintPath>
+    </Reference>
     <Reference Include="OSIsoft.PISDK, Version=1.4.0.0, Culture=neutral, PublicKeyToken=c3309f0734ba2805, processorArchitecture=AMD64">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
@@ -55,6 +61,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GE\OpcFileProcessor.cs" />
+    <Compile Include="GE\OpcField.cs" />
+    <Compile Include="OpcJob.cs" />
     <Compile Include="PurgeDirectoryJob.cs" />
     <Compile Include="FileProcessor.cs" />
     <Compile Include="ScanDirectoryJob.cs" />
@@ -78,6 +87,7 @@
       <Name>Monitor.Communication</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
