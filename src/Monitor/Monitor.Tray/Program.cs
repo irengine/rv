@@ -9,6 +9,7 @@ using Monitor.Schedule;
 using Monitor.Communication;
 using System.Data;
 using Monitor.Schedule.Vestas;
+using Monitor.Schedule.GE;
 
 namespace Monitor.Tray
 {
@@ -115,7 +116,7 @@ namespace Monitor.Tray
 
             try
             {
-                new ImportFileProcessor().Parse(@"Fields.csv");
+                LoadFile();
             }
             catch (Exception e)
             {
@@ -125,8 +126,7 @@ namespace Monitor.Tray
 
             StartServices();
 
-            ScheduleEngine.ScheduleScanDirectoryJob();
-            ScheduleEngine.SchedulePurgeDirectoryJob();
+            LoadJob();
         }
 
         private static void Stop()
@@ -141,6 +141,43 @@ namespace Monitor.Tray
             StopServices(true);
 
             logger.Info("Monitor shutdown.");
+        }
+
+
+        private static void LoadFile()
+        {
+            switch (SystemInternalSetting.Version)
+            {
+                case "V47":
+                case "V52":
+                    new ImportFileProcessor().Parse(@"Fields.csv");
+                    break;
+                case "GEOpc":
+                    new OpcFileProcessor().Parse(@"Fields.csv");
+                    break;
+                default:    // other should be V47
+                    new ImportFileProcessor().Parse(@"Fields.csv");
+                    break;
+            }
+        }
+
+        private static void LoadJob()
+        {
+            switch (SystemInternalSetting.Version)
+            {
+                case "V47":
+                case "V52":
+                    ScheduleEngine.ScheduleScanDirectoryJob();
+                    ScheduleEngine.SchedulePurgeDirectoryJob();
+                    break;
+                case "GEOpc":
+                    ScheduleEngine.ScheduleOpcJob();
+                    break;
+                default:    // other should be V47
+                    ScheduleEngine.ScheduleScanDirectoryJob();
+                    ScheduleEngine.SchedulePurgeDirectoryJob();
+                    break;
+            }
         }
 
         public static bool StartServices()
