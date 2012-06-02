@@ -75,7 +75,7 @@ namespace Monitor.ConsoleView
                     ScheduleEngine.SchedulePurgeDirectoryJob();
                     break;
                 case "GEOpc":
-                    ScheduleEngine.ScheduleOpcJob();
+                    ScheduleEngine.SchedulePassiveOpcJob();
                     break;
                 default:    // other should be V47
                     ScheduleEngine.ScheduleScanDirectoryJob();

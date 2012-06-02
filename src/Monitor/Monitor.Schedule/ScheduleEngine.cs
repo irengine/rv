@@ -7,6 +7,7 @@ using Quartz.Impl;
 using Common.Logging;
 using Monitor.Common;
 using Monitor.Schedule.Vestas;
+using Monitor.Schedule.Plugin;
 
 namespace Monitor.Schedule
 {
@@ -79,7 +80,7 @@ namespace Monitor.Schedule
             DateTime ft = engine.ScheduleJob(trigger);
         }
 
-        public static void ScheduleOpcJob()
+        public static void ScheduleActiveOpcJob()
         {
             string jobName = "ScanOpc";
             JobDetail job = new JobDetail(jobName, jobName, typeof(OpcJob));
@@ -90,6 +91,20 @@ namespace Monitor.Schedule
             CronTrigger trigger = new CronTrigger(jobName, jobName, jobName, jobName, SystemInternalSetting.Frequence);
             engine.AddJob(job, true);
             DateTime ft = engine.ScheduleJob(trigger);
+        }
+
+        public static void SchedulePassiveOpcJob()
+        {
+            OPCServer opcSrv = OPCServerFactory.CreateOPCServer();
+            if (opcSrv.CurrentOPC.IsOpen)
+            {
+                opcSrv.CurrentOPC.Stop();
+            }
+
+            // Initialize...
+            opcSrv.CurrentOPC.Initialzie(SystemInternalSetting.OpcServerName, SystemInternalSetting.OpcServiceName, SystemInternalSetting.Fields);
+
+            opcSrv.CurrentOPC.Start();
         }
 
         public static void ScheduleHeartbeatJob(string projectId)

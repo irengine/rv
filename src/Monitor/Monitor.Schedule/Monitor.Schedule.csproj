@@ -64,6 +64,9 @@
     <Compile Include="GE\OpcFileProcessor.cs" />
     <Compile Include="GE\OpcField.cs" />
     <Compile Include="OpcJob.cs" />
+    <Compile Include="Plugin\OPC.cs" />
+    <Compile Include="Plugin\OPCServer.cs" />
+    <Compile Include="Plugin\OPCServerFactory.cs" />
     <Compile Include="PurgeDirectoryJob.cs" />
     <Compile Include="FileProcessor.cs" />
     <Compile Include="ScanDirectoryJob.cs" />
