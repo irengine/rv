@@ -61,12 +61,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GE\ParadoxField.cs" />
+    <Compile Include="GE\ParadoxFileProcessor.cs" />
+    <Compile Include="ParadoxJob.cs" />
     <Compile Include="GE\OpcFileProcessor.cs" />
     <Compile Include="GE\OpcField.cs" />
     <Compile Include="OpcJob.cs" />
     <Compile Include="Plugin\OPC.cs" />
     <Compile Include="Plugin\OPCServer.cs" />
     <Compile Include="Plugin\OPCServerFactory.cs" />
+    <Compile Include="Plugin\ParadoxDatabase.cs" />
+    <Compile Include="Plugin\ParadoxDataReader.cs" />
+    <Compile Include="Plugin\ParadoxIndex.cs" />
     <Compile Include="PurgeDirectoryJob.cs" />
     <Compile Include="FileProcessor.cs" />
     <Compile Include="ScanDirectoryJob.cs" />

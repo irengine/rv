@@ -107,6 +107,21 @@ namespace Monitor.Schedule
             opcSrv.CurrentOPC.Start();
         }
 
+        public static void BatchScheduleParadoxJob()
+        {
+        }
+
+        public static void ScheduleParadoxJob()
+        {
+            string jobName = "Paradox";
+            JobDetail job = new JobDetail(jobName, jobName, typeof(ParadoxJob));
+            job.JobDataMap["fields"] = SystemInternalSetting.Fields;
+
+            CronTrigger trigger = new CronTrigger(jobName, jobName, jobName, jobName, SystemInternalSetting.Frequence);
+            engine.AddJob(job, true);
+            DateTime ft = engine.ScheduleJob(trigger);
+        }
+
         public static void ScheduleHeartbeatJob(string projectId)
         {
             string jobName = "Heartbeat_" + projectId;

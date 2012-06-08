@@ -59,6 +59,9 @@ namespace Monitor.ConsoleView
                 case "GEOpc":
                     new OpcFileProcessor().Parse(@"Fields.csv");
                     break;
+                case "GEParadox":
+                    new ParadoxFileProcessor().Parse(@"Fields.csv");
+                    break;
                 default:    // other should be V47
                     new ImportFileProcessor().Parse(@"Fields.csv");
                     break;
@@ -76,6 +79,9 @@ namespace Monitor.ConsoleView
                     break;
                 case "GEOpc":
                     ScheduleEngine.SchedulePassiveOpcJob();
+                    break;
+                case "GEParadox":
+                    ScheduleEngine.ScheduleParadoxJob();
                     break;
                 default:    // other should be V47
                     ScheduleEngine.ScheduleScanDirectoryJob();
