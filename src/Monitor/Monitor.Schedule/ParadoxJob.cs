@@ -18,32 +18,16 @@ namespace Monitor.Schedule
     {
         private static ILog logger = LogManager.GetCurrentClassLogger();
 
-        // database = path + "," + table name(no extension)
-        Hashtable htParadox = new Hashtable();
-
         public void Execute(JobExecutionContext context)
         {
             logger.Debug(m => m("Paradox job:{0} has been executed.", context.JobDetail.FullName));
 
             JobDataMap dataMap = context.JobDetail.JobDataMap;
-            IList fields = (IList)dataMap.Get("fields");
+            string database = dataMap.GetString("database");
+            Hashtable fields = (Hashtable)dataMap.Get("fields");
 
-            // reload data
-            foreach (ParadoxField field in fields)
-            {
-                if (!htParadox.ContainsKey(field.Database))
-                {
-                    htParadox[field.Database] = new Hashtable();
-                }
-
-                ((Hashtable)htParadox[field.Database])[field.Name] = field.MappingName;
-            }
-
-            foreach (string database in htParadox.Keys)
-            {
-                Console.WriteLine(database);
-                QueryParadoxFile(Path.GetDirectoryName(database), Path.GetFileNameWithoutExtension(database), (Hashtable)htParadox[database]);
-            }
+            Console.WriteLine(database);
+            QueryParadoxFile(Path.GetDirectoryName(database), Path.GetFileNameWithoutExtension(database), fields);
         }
 
         private void QueryParadoxFile(string dbPath, string tableName, Hashtable htFields)

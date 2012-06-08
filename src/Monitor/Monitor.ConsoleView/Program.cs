@@ -81,7 +81,7 @@ namespace Monitor.ConsoleView
                     ScheduleEngine.SchedulePassiveOpcJob();
                     break;
                 case "GEParadox":
-                    ScheduleEngine.ScheduleParadoxJob();
+                    ScheduleEngine.BatchScheduleParadoxJob();
                     break;
                 default:    // other should be V47
                     ScheduleEngine.ScheduleScanDirectoryJob();

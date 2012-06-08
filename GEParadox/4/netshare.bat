@@ -1,0 +1,15 @@
+net use \\172.16.10.1\C$ a29d11min2002 /user:administrator
+net use \\172.16.10.2\C$ a29d11min2002 /user:administrator
+net use \\172.16.10.3\C$ a29d11min2002 /user:administrator
+net use \\172.16.10.4\C$ a29d11min2002 /user:administrator
+net use \\172.16.10.5\C$ a29d11min2002 /user:administrator
+net use \\172.16.10.6\C$ a29d11min2002 /user:administrator
+net use \\172.16.10.7\C$ a29d11min2002 /user:administrator
+net use \\172.16.10.8\C$ a29d11min2002 /user:administrator
+net use \\172.16.10.9\C$ a29d11min2002 /user:administrator
+net use \\172.16.10.10\C$ "" /user:administrator
+net use \\172.16.10.11\C$ a29d11min2002 /user:administrator
+net use \\172.16.10.12\C$ a29d11min2002 /user:administrator
+net use \\172.16.10.13\C$ a29d11min2002 /user:administrator
+net use \\172.16.10.14\C$ a29d11min2002 /user:administrator
+net use \\172.16.10.15\C$ a29d11min2002 /user:administrator

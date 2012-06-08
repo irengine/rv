@@ -8,6 +8,8 @@ using Common.Logging;
 using Monitor.Common;
 using Monitor.Schedule.Vestas;
 using Monitor.Schedule.Plugin;
+using System.Collections;
+using Monitor.Schedule.GE;
 
 namespace Monitor.Schedule
 {
@@ -109,13 +111,35 @@ namespace Monitor.Schedule
 
         public static void BatchScheduleParadoxJob()
         {
+            // database = path + "," + table name(no extension)
+            Hashtable htParadox = new Hashtable();
+
+            IList fields = SystemInternalSetting.Fields;
+
+            // reload data
+            foreach (ParadoxField field in fields)
+            {
+                if (!htParadox.ContainsKey(field.Database))
+                {
+                    htParadox[field.Database] = new Hashtable();
+                }
+
+                ((Hashtable)htParadox[field.Database])[field.Name] = field.MappingName;
+            }
+
+            foreach (string database in htParadox.Keys)
+            {
+                ScheduleParadoxJob(database, (Hashtable)htParadox[database]);
+                //QueryParadoxFile(Path.GetDirectoryName(database), Path.GetFileNameWithoutExtension(database), (Hashtable)htParadox[database]);
+            }
         }
 
-        public static void ScheduleParadoxJob()
+        private static void ScheduleParadoxJob(string database, Hashtable fields)
         {
-            string jobName = "Paradox";
+            string jobName = "Paradox" + "," + database;
             JobDetail job = new JobDetail(jobName, jobName, typeof(ParadoxJob));
-            job.JobDataMap["fields"] = SystemInternalSetting.Fields;
+            job.JobDataMap["database"] = database;
+            job.JobDataMap["fields"] = fields;
 
             CronTrigger trigger = new CronTrigger(jobName, jobName, jobName, jobName, SystemInternalSetting.Frequence);
             engine.AddJob(job, true);
