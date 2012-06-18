@@ -136,7 +136,10 @@ namespace Monitor.Schedule.Plugin
 
         public ParadoxRecord Last()
         {
-            var block = this.GetBlock(this.fileBlocks - 1);
+            int blockIndex = this.lastBlock == 0 ? this.fileBlocks - 1 : this.lastBlock - 1;
+            var block = this.GetBlock(blockIndex);
+
+            if (block.RecordCount == 0) return null;
             var rec = block[block.RecordCount - 1];
 
             return rec;
